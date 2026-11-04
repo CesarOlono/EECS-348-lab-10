@@ -18,7 +18,10 @@ public:
     void set(int i, int j, int value);
     void print() const;
     void readFromStream(std::istream& in);
+    Matrix operator+(const Matrix& other) const;
+    Matrix operator*(const Matrix& other) const;
+    int mainDiagonalSum() const;
+    int secondaryDiagonalSum() const;
 };
-
 
 #endif

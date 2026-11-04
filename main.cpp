@@ -23,5 +23,13 @@ int main() {
     A.print();
     std::cout << "Matrix B:" << std::endl;
     B.print();
+    std::cout << "\nA + B:" << std::endl;
+    (A + B).print();
+
+    std::cout << "\nA * B:" << std::endl;
+    (A * B).print();
+
+    std::cout << "\nA main diagonal sum: " << A.mainDiagonalSum() << std::endl;
+    std::cout << "A secondary diagonal sum: " << A.secondaryDiagonalSum() << std::endl;
     return 0;
 }

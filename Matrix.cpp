@@ -47,7 +47,7 @@ Matrix& Matrix::operator=(const Matrix& other) {
     data = new int*[n];
     for (int i = 0; i < n; i++) {
 	data[i] = new int[n];
-	for (int j = 0; j , n; j++) {
+	for (int j = 0; j < n; j++) {
 	    data[i][j] = other.data[i][j];
 	}
     }
@@ -85,4 +85,47 @@ int Matrix::get(int i, int j) const {
 //Setter
 void Matrix::set(int i, int j, int value) {
     data[i][j] = value;
+}
+
+//Addition
+Matrix Matrix::operator+(const Matrix& other) const {
+    Matrix result(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+	    result.data[i][j] = data[i][j] + other.data[i][j];
+	}
+    }
+    return result;
+}
+
+//Multiplication
+Matrix Matrix::operator*(const Matrix& other) const {
+    Matrix result(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            int sum = 0;
+            for (int k = 0; k < n; k++) {
+                sum += data[i][k] * other.data[k][j];
+            }
+            result.data[i][j] = sum;
+        }
+    }
+    return result;
+}
+
+//Diagonal sums
+int Matrix::mainDiagonalSum() const {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += data[i][i];
+    }
+    return sum;
+}
+
+int Matrix::secondaryDiagonalSum() const {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += data[i][n - 1 - i];
+    }
+    return sum;
 }
